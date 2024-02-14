@@ -18,34 +18,28 @@ function startADN(){
 }
 
 function search() {
-    // for(let key in adn){
-    //     let i = 1;
-    //     for(let character of adn[key]){
-    //         changeDiv = document.getElementById(key+(i+1))
-    //         console.log(changeDiv)
-    //         i++;
-    //     }
-    // }
     const inputADN = document.getElementById("input-adn").value;
-    let n = Math.min(20,inputADN.length);
+    let n =inputADN.length;
     let result = "none"
-    let holderADN = -1;
+    let holderADN = 0;
     for(let key in adn){
         let holder = 0
         let i = 0;
         for(let character of adn[key]){
             changeDiv = document.getElementById(key+(i+1));
             if(i >= n){
-                // changeDiv.style.background = "yellow";
-                continue;
-            }
-            if(character === inputADN[i]){
-                holder++;
-                changeDiv.style.background = "green";
+                changeDiv.style.background = "yellow";
             }
             else{
-                changeDiv.style.background = "red";
+                if(character === inputADN[i]){
+                    holder++;
+                    changeDiv.style.background = "green";
+                }
+                else{
+                    changeDiv.style.background = "red";
+                }
             }
+            
             i++;
         }
         if(holder > holderADN){
